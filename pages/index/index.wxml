@@ -1,2 +1,5 @@
 <!--index.wxml-->
+<!--https://developers.weixin.qq.com/miniprogram/dev/component/button.html-->
 <view>工业项目投资策略160问</view>
+<button type="primary" bindtap="gotoExam">我是企业，现在答题</button>
+<button bindtap="gotoGrades">我是政府，查看答案</button>
