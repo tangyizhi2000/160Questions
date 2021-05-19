@@ -1,2 +1,12 @@
 <!--pages/exam/exam.wxml-->
-<text>pages/exam/exam.wxml</text>
+<text>第{{current_question_number}}题\n</text>
+<text>问题：{{current_question}}\n</text>
+<radio-group bindchange="radioChange">
+  <label wx:for="{{items}}" wx:key="value">
+    <view>
+      <radio value="{{item.value}}" checked="true"/>{{item.name}}
+    </view>
+  </label>
+</radio-group>
+<button type="primary" bindtap="nextQuestion">保存并下一题</button>
+
