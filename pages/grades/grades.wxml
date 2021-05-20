@@ -1,2 +1,8 @@
 <!--pages/grades/grades.wxml-->
-<text>pages/grades/grades.wxml</text>
+<text>查询成绩</text>
+
+<view> 公司名称</view>
+<form>
+<input  bindinput="CNinput"placeholder="输入公司名称"/>
+<button bindtap="onQuery">查询</button>
+</form>
