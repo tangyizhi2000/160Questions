@@ -1,12 +1,34 @@
 <!--pages/exam/exam.wxml-->
+<!--题号-->
 <text>第{{current_question_number}}题\n</text>
+<!--问题-->
 <text>问题：{{current_question}}\n</text>
-<radio-group bindchange="radioChange">
-  <label wx:for="{{items}}" wx:key="value">
+<!--如果问题类型是TF，选项为：是/否/不知道-->
+<view  wx:if="{{current_type=='TF'}}">
+  <radio-group bindchange="TFChange">
+  <label wx:for="{{TF}}" wx:key="value">
     <view>
-      <radio value="{{item.value}}" checked="true"/>{{item.name}}
+      <radio value="{{item.value}}"/>{{item.name}}
     </view>
   </label>
 </radio-group>
+</view>
+<!--如果问题类型是FR，选项为：知道/不知道-->
+<view wx:if="{{current_type=='FR'}}">
+  <radio-group bindchange="FRChange">
+    <label wx:for="{{FR}}" wx:key="value">
+      <view>
+        <radio value="{{item.value}}" checked="true"/>{{item.name}}
+      </view>
+    </label>
+  </radio-group>
+  <!--Delete This-->
+  <text>\n</text>
+  <text>\n</text>
+  <!--如果问题类型是FR，选择“知道”，出现文本框-->
+  <textarea wx:if="{{FR[0].checked==true}}" bindinput="FRInput" auto-height="true" placeholder="请输入您的答案" value="{{FR_ans}}">
+  </textarea>
+</view>
+<!--按钮，load下一题并且保存本题答案-->
 <button type="primary" bindtap="nextQuestion">保存并下一题</button>
 
