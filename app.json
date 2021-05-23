@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/exam/exam",
-    "pages/grades/grades"
+    "pages/grades/grades",
+    "pages/names/names"
   ],
   "window":{
     "backgroundTextStyle":"light",
