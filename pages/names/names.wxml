@@ -1,4 +1,0 @@
-<!--pages/names/names.wxml-->
-<text>公司名称将作为数据查看/修改的唯一标识符</text>
-<textarea bindinput="name_input" placeholder="请输入公司名称"> </textarea>
-<button type="primary" bindtap="ready">好的，准备答题</button>
