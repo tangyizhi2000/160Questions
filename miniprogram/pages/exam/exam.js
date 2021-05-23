@@ -1,5 +1,5 @@
 wx.cloud.init()
-const db = wx.cloud.database();
+const db = wx.cloud.database()
 let next_question = ""
 let next_type = ""
 
@@ -70,9 +70,7 @@ Page({
   },
 
   nextQuestion: function(){
-    //储存当前问题答案
-    let user=wx.getStorageSync('user').openid
-    console.log(user)
+    //储存当前问题答案    
 
 
     //读取下一个问题的题目

@@ -4,7 +4,11 @@
     "pages/logs/logs",
     "pages/exam/exam",
     "pages/grades/grades",
+<<<<<<< HEAD:miniprogram/app.json
     "pages/login/login"
+=======
+    "pages/names/names"
+>>>>>>> master:app.json
   ],
   "window":{
     "backgroundTextStyle":"light",

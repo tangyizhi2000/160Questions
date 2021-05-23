@@ -14,6 +14,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    AppID: wxd755d180fbddfe43,
+    AppSecret: d5ee94097c5c6dadff203137e8dab3e4
   }
 })

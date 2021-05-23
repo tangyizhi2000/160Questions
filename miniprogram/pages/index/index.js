@@ -15,7 +15,7 @@ Page({
   },
   gotoExam: function(){
     wx.navigateTo({
-      url: '/pages/exam/exam',
+      url: '/pages/names/names',
     })
   },
   gotoGrades: function(){
