@@ -4,10 +4,7 @@
     "pages/logs/logs",
     "pages/exam/exam",
     "pages/grades/grades",
-<<<<<<< HEAD:miniprogram/app.json
     "pages/login/login",
-=======
->>>>>>> master:app.json
     "pages/names/names"
   ],
   "window":{
@@ -19,7 +16,6 @@
   "style": "v2",
   "sitemapLocation": "sitemap.json",
   "useExtendedLib": {
-    "kbone": true,
     "weui": true
   }
 }

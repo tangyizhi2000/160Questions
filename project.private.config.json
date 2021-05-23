@@ -1,0 +1,23 @@
+{
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/grades/grades",
+          "pathName": "pages/grades/grades",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

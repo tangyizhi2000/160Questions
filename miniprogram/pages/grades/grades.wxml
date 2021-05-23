@@ -6,3 +6,6 @@
 <input  bindinput="CNinput"placeholder="输入公司名称"/>
 <button bindtap="onQuery">查询</button>
 </form>
+<view class="box" wx:for="{{dataList}}" wx:key="id">
+  <view class="companyName">{{index+1}}. {{item.Company_Name}}</view>
+</view>

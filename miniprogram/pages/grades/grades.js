@@ -7,14 +7,15 @@ Page({
    */
   data: {
     comName:"",
-    grade:""
+    grade:"",
+    dataList:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
- 
+    this.displayGrades(1, 0);
   },
 
   /**
@@ -56,7 +57,8 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    var page = this.data.dataList.length
+    this.displayGrades(1, page)
   },
 
   /**
@@ -65,6 +67,7 @@ Page({
   onShareAppMessage: function () {
 
   },
+
   /**
    *  查询所输入的公司名称成绩
    */
@@ -73,6 +76,7 @@ Page({
       comName: e.detail.value
     });
   },
+
   onQuery: function(){
     var that = this
     const db= wx.cloud.database();
@@ -89,8 +93,26 @@ Page({
         });
         console.error("未找到匹配成绩");
       }
-      
     });
-    
+  },
+
+  /**
+   *  数据库中从第page+1个数据开始，显示num个成绩
+   */
+  displayGrades: function(num = 1, page = 0){
+    console.log(123)
+    wx.cloud.callFunction({
+      name:"getNumGrades",
+      data:{
+        num:num,
+        page:page
+      }
+    }).then(res=>{
+      var oldData = this.data.dataList;
+      var newData = oldData.concat(res.result.data);
+      this.setData({
+        dataList:newData
+      })
+    })
   }
 })
