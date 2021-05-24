@@ -12,9 +12,5 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
-  },
-  globalData: {
-    AppID: "wxd755d180fbddfe43",
-    AppSecret: "d5ee94097c5c6dadff203137e8dab3e4"
   }
 })

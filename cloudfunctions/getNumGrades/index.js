@@ -5,6 +5,8 @@ cloud.init()
 const db = cloud.database();
 
 // 云函数入口函数
+// event.num: number of results to return
+// event.page: number of results to skip
 exports.main = async (event, context) => {
   var num = event.num;
   var page = event.page;

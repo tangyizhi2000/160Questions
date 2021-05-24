@@ -52,6 +52,8 @@
     "servePath": ""
   },
   "isGameTourist": false,
+  "cloudbaseRoot": "cloudbase/",
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {
     "search": {
       "list": []
@@ -71,6 +73,5 @@
     "miniprogram": {
       "list": []
     }
-  },
-  "cloudbaseRoot": "cloudbase/"
+  }
 }

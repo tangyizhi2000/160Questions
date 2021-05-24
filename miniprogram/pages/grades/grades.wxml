@@ -1,11 +1,13 @@
-<!--pages/grades/grades.wxml-->
+<view>
+  <mp-searchbar placeholder="输入公司名称" focus bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
+</view>
+<!-- 
 <text>查询成绩</text>
-
-<view> 公司名称</view>
+<view>公司名称</view>
 <form>
-<input  bindinput="CNinput"placeholder="输入公司名称"/>
-<button bindtap="onQuery">查询</button>
-</form>
+  <input bindinput="CNinput" placeholder="输入公司名称" />
+  <button bindtap="search">查询</button>
+</form> -->
 <view class="box" wx:for="{{dataList}}" wx:key="id">
   <view class="companyName">{{index+1}}. {{item.Company_Name}}</view>
 </view>

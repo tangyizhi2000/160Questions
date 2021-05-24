@@ -4,13 +4,12 @@
     "pages/logs/logs",
     "pages/exam/exam",
     "pages/grades/grades",
-    "pages/login/login",
     "pages/names/names"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "工业项目投资策略160问",
     "navigationBarTextStyle":"black"
   },
   "style": "v2",
