@@ -4,7 +4,9 @@
     "pages/logs/logs",
     "pages/exam/exam",
     "pages/grades/grades",
-    "pages/names/names"
+    "pages/names/names",
+    "pages/multiGradesResult/multiGradesResult",
+    "pages/singleGradesResult/singleGradesResult"
   ],
   "window":{
     "backgroundTextStyle":"light",

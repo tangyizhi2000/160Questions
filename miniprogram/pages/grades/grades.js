@@ -71,7 +71,10 @@ Page({
    *  用户选择搜索结果
    */
   selectResult: function (e) {
-    console.log('select result', e.detail)
+    let name = e.detail.item.text;
+    wx.navigateTo({
+      url: '/pages/multiGradesResult/multiGradesResult?name=' + name,
+    })
   },
 
   /**
@@ -82,7 +85,8 @@ Page({
       name: "getNumGrades",
       data: {
         num: num,
-        page: page
+        page: page,
+        name: ""
       }
     }).then(res => {
       var oldData = this.data.dataList;

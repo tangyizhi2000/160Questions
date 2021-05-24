@@ -1,0 +1,3 @@
+<view class="box" wx:for="{{dataList}}" wx:key="id">
+  <navigator url="../singleGradesResult/singleGradesResult?id={{item._id}}">{{index+1}}. {{item.Company_Name}}</navigator>
+</view>

@@ -1,0 +1,3 @@
+<view wx:for="{{data.Answer}}" wx:key="id">
+    <view>{{index+1}}. {{item.ans}}</view>
+</view>

@@ -1,4 +1,5 @@
 {
+  "setting": {},
   "condition": {
     "plugin": {
       "list": []
@@ -15,6 +16,18 @@
           "name": "pages/grades/grades",
           "pathName": "pages/grades/grades",
           "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/multiGradesResult/multiGradesResult",
+          "pathName": "pages/multiGradesResult/multiGradesResult",
+          "query": "name=123",
+          "scene": null
+        },
+        {
+          "name": "pages/singleGradesResult/singleGradesResult",
+          "pathName": "pages/singleGradesResult/singleGradesResult",
+          "query": "id=79550af260a9e31419526e1d444d8c50",
           "scene": null
         }
       ]
