@@ -70,9 +70,7 @@ Page({
   },
 
   nextQuestion: function(){
-    //储存当前问题答案    
-
-
+    //TODO: 储存当前问题答案，覆盖之前的答案
     //读取下一个问题的题目
     db.collection('160Questions').where({
       count: this.data.current_question_number + 1
@@ -90,7 +88,7 @@ Page({
           FR_ans: "",
         })
     })
-    //读取下一个问题之前的答案if any
+    //TODO: 读取下一个问题之前的答案if any，并显示到上面
   },
 
   /**

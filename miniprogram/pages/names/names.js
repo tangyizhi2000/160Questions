@@ -12,7 +12,8 @@ Page({
   },
   ready: function(){
     if (this.data.company_name !== ""){
-      //查询/创建数据库
+      //TODO: 如果已经有重复名字的，查询数据库
+      // 如果没有再创建新的库
       db.collection('CompanyGrades').add({
         // data 字段表示需新增的 JSON 数据
         data: {
