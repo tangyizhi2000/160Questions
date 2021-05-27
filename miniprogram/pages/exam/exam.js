@@ -12,14 +12,14 @@ Page({
   data: {
     //TrueFalse题Radio
     TF: [
-      {value: 'T', name: '是'},
-      {value: 'F', name: '否'},
-      {value: '?', name: '不知道', checked: 'true'},
+      { value: 'T', name: '是' },
+      { value: 'F', name: '否' },
+      { value: '?', name: '不知道', checked: 'true' },
     ],
     //FreeResponse题Radio
     FR: [
-      {value: 'T', name: '知道'},
-      {value: 'F', name: '不知道', checked: 'true'},
+      { value: 'T', name: '知道' },
+      { value: 'F', name: '不知道', checked: 'true' },
     ],
     //目前题目题号
     current_question_number: 0,
@@ -66,29 +66,34 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
-  nextQuestion: function(){
+  nextQuestion: function () {
     //TODO: 储存当前问题答案，覆盖之前的答案
     //读取下一个问题的题目
+    let currCount = this.data.current_question_number + 1;
+    if (currCount > 159) {
+      wx.navigateTo({
+        url: '../result/result?',
+      })
+    }
     db.collection('160Questions').where({
-      count: this.data.current_question_number + 1
-    })
-    .get()
-    .then(res => {
-        // res.data 是一个包含集合中有权限访问的所有记录的数据，不超过 20 条
-        next_question = res.data[0]['question']
-        next_type = res.data[0]['type']
-        console.log(next_type)
-        this.setData({
-          current_question_number: this.data.current_question_number + 1,
-          current_question: next_question,
-          current_type: next_type,
-          FR_ans: "",
-        })
+      count: currCount
+    }).get().then(res => {
+      // res.data 是一个包含集合中有权限访问的所有记录的数据，不超过 20 条
+      next_question = res.data[0]['question']
+      next_type = res.data[0]['type']
+      console.log(next_type)
+      this.setData({
+        current_question_number: this.data.current_question_number + 1,
+        current_question: next_question,
+        current_type: next_type,
+        FR_ans: "",
+      })
     })
     //TODO: 读取下一个问题之前的答案if any，并显示到上面
+
   },
 
   /**

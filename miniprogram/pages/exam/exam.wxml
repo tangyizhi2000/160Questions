@@ -1,4 +1,3 @@
-<!--pages/exam/exam.wxml-->
 <!--题号-->
 <text>第{{current_question_number}}题\n</text>
 <!--问题-->

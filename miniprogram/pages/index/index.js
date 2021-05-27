@@ -13,14 +13,14 @@ Page({
   },
   onLoad() {
   },
-  gotoExam: function(){
+  gotoExam: function () {
     wx.navigateTo({
       url: '/pages/names/names',
     })
   },
-  gotoGrades: function(){
+  gotoGrades: function () {
     wx.navigateTo({
-      url: '/pages/grades/grades',
+      url: '/pages/login/login',
     })
   }
 })

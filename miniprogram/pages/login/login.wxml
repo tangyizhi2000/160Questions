@@ -1,0 +1,7 @@
+<!--miniprogram/pages/login/login.wxml-->
+<view>
+  <label>请输入查询码</label>
+  <input bindinput="getPassword" type="password" placeholder="请输入查询码" placeholder-style="color:white" class="userPassword"></input>
+  <button class="login-button" bindtap="loginAction">确认</button>
+</view>
+

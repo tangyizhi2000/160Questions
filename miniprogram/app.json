@@ -6,7 +6,9 @@
     "pages/grades/grades",
     "pages/names/names",
     "pages/multiGradesResult/multiGradesResult",
-    "pages/singleGradesResult/singleGradesResult"
+    "pages/singleGradesResult/singleGradesResult",
+    "pages/result/result",
+    "pages/login/login"
   ],
   "window":{
     "backgroundTextStyle":"light",
