@@ -1,18 +1,30 @@
-// pages/result/result.js
+wx.cloud.init()
+const db = wx.cloud.database()
+const _ = db.command
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    id: "",
+    grade: 0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      id: options.id,
+    })
+    db.collection("CompanyGrades").doc(this.data.id).get().then(res => {
+      console.log(res)
+      this.setData({
+        grade: res.data['grade']
+      })
+    })
   },
 
   /**
