@@ -1,1 +1,1 @@
-<view>{{grade}}</view>
+<view>您的成绩为{{grade}}</view>

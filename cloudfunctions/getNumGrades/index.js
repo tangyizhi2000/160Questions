@@ -16,6 +16,6 @@ exports.main = async (event, context) => {
   if (name == "") {
     return await db.collection("CompanyGrades").skip(page).limit(num).get()
   } else {
-    return await db.collection("CompanyGrades").where({ Company_Name: name }).skip(page).limit(num).get()
+    return await db.collection("CompanyGrades").where({ Company_Name: name }).orderBy("time", "desc").skip(page).limit(num).get()
   }
 }
