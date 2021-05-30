@@ -1,1 +1,1 @@
-<view>您的成绩为{{grade}}</view>
+<view style="margin-top: 30px; margin-left: 20px; margin-right: 20px; font-size: 20px">您的成绩为{{grade}}</view>

@@ -26,7 +26,7 @@ Page({
     //目前题目题号
     current_question_number: 0,
     //目前题目本身
-    current_question: "使用说明，每个问题会自动保存",
+    current_question: "使用说明: 点击按钮后，上一个题目的答案会被保存",
     //题目类型，TF / FR
     current_type: "",
     //FR题答案
