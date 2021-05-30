@@ -1,5 +1,4 @@
-// pages/grades/grades.js
-
+import { fuzzySearch, getNumGrades } from '../../common.js';
 Page({
 
   /**
@@ -8,7 +7,7 @@ Page({
   data: {
     comName: "",
     grade: "",
-    dataList: []
+    dataList: [],
   },
 
   // CNinput: function(e){
@@ -44,13 +43,8 @@ Page({
   search: function (value) {
     return new Promise((resolve, reject) => {
       let result = []
-      wx.cloud.callFunction({
-        name: "fuzzySearch",
-        data: {
-          value: value
-        }
-      }).then(res => {
-        let array = res.result.data
+      fuzzySearch(value).then(res => {
+        let array = res.data
         let temp = []
         array.forEach(element => {
           temp.push(element.Company_Name)
@@ -81,16 +75,9 @@ Page({
    *  数据库中从第page+1个数据开始，显示num个成绩
    */
   displayGrades: function (num = 1, page = 0) {
-    wx.cloud.callFunction({
-      name: "getNumGrades",
-      data: {
-        num: num,
-        page: page,
-        name: ""
-      }
-    }).then(res => {
+    getNumGrades(num, page, "").then(res => {
       var oldData = this.data.dataList;
-      var newData = oldData.concat(res.result.data);
+      var newData = oldData.concat(res.data);
       this.setData({
         dataList: newData
       })

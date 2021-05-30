@@ -1,4 +1,5 @@
 // pages/multiGradesResult/multiGradesResult.js
+import { getNumGrades } from '../../common.js';
 Page({
 
   /**
@@ -13,16 +14,9 @@ Page({
    *  数据库中从第page+1个数据开始，显示num个成绩
    */
   displayGrades: function (num = 1, page = 0) {
-    wx.cloud.callFunction({
-      name: "getNumGrades",
-      data: {
-        num: num,
-        page: page,
-        name: this.data.comName
-      }
-    }).then(res => {
+    getNumGrades(num, page, this.data.comName).then(res => {
       var oldData = this.data.dataList;
-      var newData = oldData.concat(res.result.data);
+      var newData = oldData.concat(res.data);
       this.setData({
         dataList: newData
       })
