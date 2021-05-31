@@ -1,1 +1,30 @@
 /* miniprogram/pages/login/login.wxss */
+.loginPage{
+  align-items:center;
+  padding-top:20%;
+}
+.label{
+  text-align:center;
+  font-size: 25px;
+  padding-top:15%;
+  font-family: "Microsoft soft";
+  color:rgb(41, 41, 114);
+  font-weight:bold;
+}
+input{
+  margin-top:10%;
+  text-align:center;
+  outline-style:transparent;
+  padding:7px 0px;
+  border:1px solid #ccc;
+  width:50%;
+  font-size: 15px;
+  margin-left:25%;
+  font-family: "Microsoft soft";
+}
+
+button{
+  margin-top:10%;
+  font-weight:bold;
+  border-radius: 20px;
+}
