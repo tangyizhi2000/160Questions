@@ -8,21 +8,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id: "",
-    grade: 0,
+    data: [],
+    percentage: 0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      id: options.id,
-    })
-    db.collection("CompanyGrades").doc(this.data.id).get().then(res => {
+    let id = options.id
+    db.collection("CompanyGrades").where({ _id: id }).get().then(res => {
       console.log(res)
       this.setData({
-        grade: res.data['grade']
+        data: res.data[0],
+        percentage: (res.data[0].grade / 159 * 100).toFixed(2),
       })
     })
   },

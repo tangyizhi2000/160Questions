@@ -1,11 +1,15 @@
-// pages/singleGradesResult/singleGradesResult.js
+wx.cloud.init()
+const db = wx.cloud.database()
+const _ = db.command
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    data: []
+    data: [],
+    percentage: 0,
   },
 
   /**
@@ -13,14 +17,12 @@ Page({
    */
   onLoad: function (options) {
     let id = options.id
-    wx.cloud.callFunction({
-      name: "searchGradeByID",
-      data: { id: id }
-    }).then(res => {
+    db.collection("CompanyGrades").where({ _id: id }).get().then(res => {
+      console.log(res)
       this.setData({
-        data: res.result.data[0]
+        data: res.data[0],
+        percentage: (res.data[0].grade / 159 * 100).toFixed(2),
       })
-      console.log(this.data.data)
     })
   },
 

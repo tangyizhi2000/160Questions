@@ -21,7 +21,7 @@
         {
           "name": "pages/multiGradesResult/multiGradesResult",
           "pathName": "pages/multiGradesResult/multiGradesResult",
-          "query": "name=123",
+          "query": "name=?",
           "scene": null
         },
         {
@@ -40,6 +40,12 @@
           "name": "pages/result/result",
           "pathName": "pages/result/result",
           "query": "id=28ee4e3e60b1c4e61dca3c006e237c57",
+          "scene": null
+        },
+        {
+          "name": "pages/login/login",
+          "pathName": "pages/login/login",
+          "query": "",
           "scene": null
         }
       ]

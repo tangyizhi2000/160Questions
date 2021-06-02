@@ -1,6 +1,10 @@
+<view class="grades">
 <view>公司名称：{{data.Company_Name}}</view>
-<view>公司成绩：{{data.grade}}</view>
+<view>公司成绩：{{percentage}}%</view>
 <view>答题时间: {{data.time}}</view>
+</view>
+<!--
 <view wx:for="{{data.Answer}}" wx:key="id">
     <view>{{index+1}}. {{item.ans}}</view>
 </view>
+-->

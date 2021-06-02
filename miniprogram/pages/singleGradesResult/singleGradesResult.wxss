@@ -1,1 +1,7 @@
 /* pages/singleGradesResult/singleGradesResult.wxss */
+.grades{
+  align-items:center;
+  padding-top:20%;
+  padding-left:10%;
+
+}
