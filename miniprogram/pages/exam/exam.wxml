@@ -1,38 +1,17 @@
-<view style="margin-top: 30px; margin-left: 20px; margin-right: 20px">
-  <!--题号-->
-  <text style="font-size: 25px">第{{current_question_number}}题\n</text>
-  <!--问题-->
-  <view>
-    <text>{{current_question}}\n</text>
-    <!--如果问题类型是TF，选项为：是/否/不知道-->
-    <view wx:if="{{current_type=='TF'}}">
-      <radio-group bindchange="TFChange">
-        <label wx:for="{{TF}}" wx:key="value">
-          <view>
-            <radio value="{{item.value}}" checked/>{{item.name}}
-          </view>
-        </label>
-      </radio-group>
-  </view>
-  <!--如果问题类型是FR，选项为：知道/不知道-->
-  <view wx:if="{{current_type=='FR'}}">
-    <radio-group bindchange="FRChange">
-      <label wx:for="{{FR}}" wx:key="value">
-        <view>
-          <radio value="{{item.value}}" checked="true" />{{item.name}}
-        </view>
+<view wx:if="{{current_page_number === 0}}">
+使用说明：xxxxxx
+</view>
+<view wx:if="{{current_page_number !== 0}}">
+  <view wx:for="{{current_page_content}}">
+    <text>第{{item.count}}题</text>
+    <text>{{item.question}}</text>
+    <radio-group bindchange="radioChange" data-number="{{index}}">
+      <label wx:for-item="jtem" wx:for="{{choice[index]}}" wx:key="{{jtem.value}}">
+        <radio value="{{jtem.value}}" checked="true">{{jtem.name}}</radio>
       </label>
     </radio-group>
-    <!--Delete This-->
-    <text>\n</text>
-    <text>\n</text>
-    <!--如果问题类型是FR，选择“知道”，出现文本框-->
-    <textarea wx:if="{{FR[0].checked==true}}" bindinput="FRInput" auto-height="true" placeholder="请输入您的答案"
-      value="{{FR_ans}}">
+    <textarea wx:if="{{choice_selected[index]===0 && current_page_content[index].type==='FR'}}" bindinput="FRInput" data-number="{{index}}" value="{{FR_ans}}" placeholder="请输入您的答案">
     </textarea>
   </view>
-  <!--按钮，load下一题并且保存本题答案-->
-  <button type="primary" bindtap="nextQuestion" style="position: fixed; left: 176rpx; top: 932rpx">保存并下一题</button>
-  </view>
 </view>
-
+<button type="primary" bindtap="nextPage">保存，下一页</button>
