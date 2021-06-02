@@ -1,0 +1,2 @@
+CompanyGrade里面，choice为1是“是”，choice为2是“否”，choice为“-1”是不知道。如果只是知道和不知道那么就是1是“知道”，2是“不知道”
+CompanyGrade里面，grading为1是choice==1得分；grading为2是choice==2得分；grading为0是choice==1||choice==2得分

@@ -3,8 +3,22 @@
 <view>公司成绩：{{percentage}}%</view>
 <view>答题时间: {{data.time}}</view>
 </view>
-<!--
-<view wx:for="{{data.Answer}}" wx:key="id">
-    <view>{{index+1}}. {{item.ans}}</view>
+
+<view wx:for="{{QaA}}" wx:key="id">
+    <h1>{{categories[index]}}</h1>
+    <view wx:for="{{item}}" wx:key="id">
+        <view>{{index+1}}. {{item.question}}</view>
+        <!-- 如果下面这行没有显示，那一定是答案本身是空的 -->
+        <block wx:if="{{item.answer.type == 'FR'}}">
+            <view wx:if="{{item.answer.choice == 1}}">该公司知道本题答案：{{item.answer.ans}}</view>
+            <view wx:else>该公司知道不知道本题答案</view>
+        </block>
+        <block wx:else>
+            <view wx:if="{{item.answer.choice == 1}}">该公司知道的答案为：是</view>
+            <view wx:elif="{{item.answer.choice == 2}}">该公司知道的答案为：否</view>
+            <view wx:else>该公司知道不知道本题答案</view>
+        </block>
+    </view>
 </view>
--->
+
+
