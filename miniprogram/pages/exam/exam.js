@@ -1,6 +1,7 @@
 wx.cloud.init()
 const db = wx.cloud.database()
 const _ = db.command
+let grades = 0
 
 // pages/exam/exam.js
 Page({
@@ -10,7 +11,8 @@ Page({
     choice_selected: [],
     content: [], // 所有FR题的回答
     current_page_number: 0, //现在的页数
-    current_page_content: [] //现在页的内容
+    current_page_content: [], //现在页的内容
+    number_questions_per_page: [8, 7, 5, 15, 18, 10, 11, 22, 39, 7, 9, 8], //每一页多少道题
   },
    //RadioChange
    radioChange(e) {
@@ -22,7 +24,7 @@ Page({
     } else if (e.detail.value == "F"){
       temp_select = 1
     } else {
-      temp_select = 2
+      temp_select = -1
     }
     // 记录答案
     temp_choice_selected[e.currentTarget.dataset.number] = temp_select
@@ -45,6 +47,15 @@ Page({
     var that = this
     // for-loop 一道题一道题的存，丑陋的代码，但没有办法
     that.data.current_page_content.forEach(function(item, index, array) {
+      if(that.data.current_page_content[index].grading === 1 && that.data.choice_selected[index] === 0){
+        grades = grades + 1
+      } else if(that.data.current_page_content[index].grading === 2 && that.data.choice_selected[index] === 1){
+        grades = grades + 1
+      } else if(that.data.current_page_content[index].grading === 3){
+        if (that.data.choice_selected[index] === 1 || that.data.choice_selected[index] === 2){
+          grades = grades + 1
+        }
+      }
       let dataset_number = "Answer." + (item.count - 1)
       if (item.type === "TF"){ // 如果是 TF, 没有FR答案，为None
         db.collection('CompanyGrades').doc(that.data.id).update({
@@ -83,7 +94,18 @@ Page({
       choice: [],
       choice_selected: [],
       content: [],
-    }),
+    })
+    if(this.data.current_page_number > 12){
+      db.collection('CompanyGrades').doc(this.data.id).update({
+        data: {
+          grade: grades,
+        }
+      })
+      wx.navigateTo({
+        url: '../result/result?id=' + this.data.id,
+      })
+    }
+    //for(let i = 0; i < this.data.number_questions_per_page[this.data.current_page_number - 1]; ++i){
     db.collection('160Questions').where({ // 从数据库读取下一页的内容
       page: this.data.current_page_number,
     })
@@ -92,25 +114,62 @@ Page({
       this.setData({ // 更新这一页的内容
         current_page_content: res.data,
       })
-      console.log(this.data.current_page_content)
-      let temp_choice = []
-      let temp_content = []
-      let temp_choice_selected = []
-      this.data.current_page_content.forEach(function(item, index, array) {
-        temp_content.push("None")
-        temp_choice_selected.push(2)
-        if (item.type === "TF"){
-          temp_choice.push([{value: 'T', name: '是'}, {value: 'F', name: '否'}, {value: '?', name: '不知道', checked: 'true'}])
-        } else {
-          temp_choice.push([{value: 'T', name: '知道'}, {value: '?', name: '不知道', checked: 'true'}])
-        }
-      })
-      this.setData({
-        choice: temp_choice, // 把这一页所有的选项放进choices
-        content: temp_content,
-        choice_selected: temp_choice_selected,
-      })
+      //如果大于20条内容，再fetch一遍
+      if (this.data.number_questions_per_page[this.data.current_page_number - 1] > 20){
+        let temp_current_page_content = this.data.current_page_content
+        db.collection('160Questions').where({ // 从数据库读取下一页的内容
+          page: this.data.current_page_number,
+        })
+        .skip(20)
+        .get()
+        .then(res => {
+          temp_current_page_content = temp_current_page_content.concat(res.data)
+          this.setData({ // 更新这一页的内容
+            current_page_content: temp_current_page_content,
+          })
+        }).then(res => {
+          console.log(this.data.current_page_content)
+          let temp_choice = []
+          let temp_content = []
+          let temp_choice_selected = []
+          this.data.current_page_content.forEach(function(item, index, array) {
+            temp_content.push("None")
+            temp_choice_selected.push(2)
+            if (item.type === "TF"){
+              temp_choice.push([{value: 'T', name: '是'}, {value: 'F', name: '否'}, {value: '?', name: '不知道', checked: 'true'}])
+            } else {
+              temp_choice.push([{value: 'T', name: '知道'}, {value: '?', name: '不知道', checked: 'true'}])
+            }
+          })
+          this.setData({
+            choice: temp_choice, // 把这一页所有的选项放进choices
+            content: temp_content,
+            choice_selected: temp_choice_selected,
+          })
+        })
+      } else {
+        console.log(this.data.current_page_content)
+        let temp_choice = []
+        let temp_content = []
+        let temp_choice_selected = []
+        this.data.current_page_content.forEach(function(item, index, array) {
+          temp_content.push("None")
+          temp_choice_selected.push(2)
+          if (item.type === "TF"){
+            temp_choice.push([{value: 'T', name: '是'}, {value: 'F', name: '否'}, {value: '?', name: '不知道', checked: 'true'}])
+          } else {
+            temp_choice.push([{value: 'T', name: '知道'}, {value: '?', name: '不知道', checked: 'true'}])
+          }
+        })
+        this.setData({
+          choice: temp_choice, // 把这一页所有的选项放进choices
+          content: temp_content,
+          choice_selected: temp_choice_selected,
+        })
+      }
     })
+    //}
+
   },
   onLoad: function (options) {
     console.log(options)
